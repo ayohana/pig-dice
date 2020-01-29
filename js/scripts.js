@@ -47,5 +47,6 @@ $(document).ready(function(){
     player1.addFinalPoints();
     console.log(player1);
     // $("#player1finalPoints").text(player1.finalPoints);
+    $('#exampleModalCenter').modal('show');
   });
 })
