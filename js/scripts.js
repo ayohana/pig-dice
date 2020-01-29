@@ -16,8 +16,7 @@ Player.prototype.addTotalRoundPoints = function(random){
   if (random === 1){
     this.numbers.splice(0, this.numbers.length);
     this.totalRoundPoints = 0;
-    // this.showRoll1();
-    this.showPlayerTurn();
+    this.showRolled1(random);
     Player.turn = false;
   } else{
     this.totalRoundPoints += random;
@@ -34,11 +33,6 @@ function generateRandomNumber(){
 
 Player.prototype.showPlayerTurn = function(){
   $('#exampleModalCenter').modal('show');
-  if (this.totalRoundPoints = 0){
-    $("#showRolled1").show();
-  } else {
-    $("#showRolled1").hide();
-  }
   if (this.id === 1) {
     $('#player2turn').show();
     $('#player1turn').hide();
@@ -49,15 +43,40 @@ Player.prototype.showPlayerTurn = function(){
     $('#player1turn').show();
     $('#player2turn').hide();
     $("#player2").hide();
-    $("#player1").show();
-  }
+    $("#player1").show();   
+    }
   this.turn = true;
 }
 
-// Player.prototype.showRoll1 = function(){
-//   $("#showRolled1").toggle();
-//   this.showPlayerTurn();
+Player.prototype.showRolled1 = function(random) {
+  if (random === 1) {
+    $("#showRolled1").show();
+    this.showPlayerTurn();
+  } else {
+    $("#showRolled1").hide();
+    this.showPlayerTurn();
+  }
+}
+
+// // WORK ON THIS CODE BELOW TO SHOW YOU ROLLED A 1!!!
+// Player.prototype.showPlayerTurn = function(random){
+//   $('#exampleModalCenter').modal('show');
+//   if (this.id === 1) {
+//     $('#player2turn').show();
+//     $('#player1turn').hide();
+//     $("#player1").hide();
+//     $("#player2").show();
+//   }
+//   if (this.id === 2) {
+//     $('#player1turn').show();
+//     $('#player2turn').hide();
+//     $("#player2").hide();
+//     $("#player1").show();   
+//     }
+//   this.turn = true;
 // }
+
+
 
 // $(`#player${id}`).hide();
 
@@ -72,8 +91,8 @@ console.log(player2)
 
 $(document).ready(function(){
   $("#player1roll").click(function(event){
-    event.preventDefault();
     var random = generateRandomNumber();
+    event.preventDefault();
     player1.addRandomInput(random);
     player1.addTotalRoundPoints(random);
     console.log(player1);
@@ -93,8 +112,8 @@ $(document).ready(function(){
     player2.addRandomInput(random);
     player2.addTotalRoundPoints(random);
     console.log(player2);
-    $("#player1RandomInput").text(random);
-    $("#player1roundPoints").text(player2.totalRoundPoints);
+    $("#player2RandomInput").text(random);
+    $("#player2roundPoints").text(player2.totalRoundPoints);
   });
 
   $("#player2hold").click(function(event){
