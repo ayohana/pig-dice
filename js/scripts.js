@@ -44,6 +44,8 @@ $(document).ready(function(){
 
   $("#player1hold").click(function(event){
     event.preventDefault();
-    player1.addFinalPoints;
+    player1.addFinalPoints();
+    console.log(player1);
+    // $("#player1finalPoints").text(player1.finalPoints);
   });
 })
